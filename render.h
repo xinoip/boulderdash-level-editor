@@ -13,6 +13,7 @@
 #define FONT_HEIGHT 32
 
 void renderFrame(SDL_Renderer *renderer);
+void renderInputScene(SDL_Renderer *renderer, char *name, int time, int diamond);
 
 int loadMedia(SDL_Renderer *renderer);
 
