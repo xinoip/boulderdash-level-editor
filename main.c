@@ -1,8 +1,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
+
 #include "./render.h"
 #include "./wrappers/pio-window.h"
+#include "./inputChecker.h"
 
 #define INIT_WIDTH 1366
 #define INIT_HEIGHT 720
@@ -112,7 +114,7 @@ int main(int argc, char *args[])
                     }
                     else if (e.type == SDL_KEYDOWN)
                     {
-                        
+                        isDigit(e);
                     }
                     else if (e.type == SDL_WINDOWEVENT)
                     {
