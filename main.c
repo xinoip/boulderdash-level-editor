@@ -4,11 +4,26 @@
 
 #include "./render.h"
 #include "./wrappers/pio-window.h"
+#include "./controls.h"
 
 #define INIT_WIDTH 1366
 #define INIT_HEIGHT 720
 
 const char *TITLE = "pioEditor";
+
+typedef struct Output
+{
+    char *name;
+    int time;
+    int diaReq;
+} output_t;
+
+output_t gOutput;
+void debugOutput() {
+    printf("name: %s\n", gOutput.name);
+    printf("time: %d\n", gOutput.time);
+    printf("diaReq: %d\n", gOutput.diaReq);
+}
 
 pioWindow_t gWindow;
 SDL_Renderer *gRenderer = NULL;
@@ -60,10 +75,10 @@ int init()
                 }
 
                 //Initialize font loading
-                if(TTF_Init() == -1) {
+                if (TTF_Init() == -1)
+                {
                     printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
                     success = 0;
-
                 }
             }
         }
@@ -86,8 +101,22 @@ void closeAll()
 
 int main(int argc, char *args[])
 {
+    int successArguments = 0;
+    if(argc != 4) {
+        printf("You need to pass 3 arguments: \n");
+        printf("Name, time, diaReq\n");
+    } else {
+        gOutput.name = (char *)malloc(100*sizeof(char));
+        strcpy(gOutput.name, args[1]);
+        char *timeStr = args[2];
+        char *diaReqStr = args[3];
+        gOutput.time = atoi(timeStr);
+        gOutput.diaReq = atoi(diaReqStr);
+        debugOutput();
+        successArguments = 1;
+    }
 
-    if (!init())
+    if (!init() || successArguments == 0)
     {
         printf("Failed to initialize!\n");
     }
@@ -113,7 +142,6 @@ int main(int argc, char *args[])
                     }
                     else if (e.type == SDL_KEYDOWN)
                     {
-                        
                     }
                     else if (e.type == SDL_WINDOWEVENT)
                     {
