@@ -114,7 +114,7 @@ int main(int argc, char *args[])
                     }
                     else if (e.type == SDL_KEYDOWN)
                     {
-                        isDigit(e);
+                        
                     }
                     else if (e.type == SDL_WINDOWEVENT)
                     {
