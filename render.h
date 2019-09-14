@@ -7,6 +7,7 @@
 #include "./wrappers/pio-text-font.h"
 #include "./wrappers/pio-window.h"
 #include "./output.h"
+#include "./camera.h"
 
 #define TILE_WIDTH 64
 #define TILE_HEIGHT 64
@@ -14,7 +15,7 @@
 #define FONT_HEIGHT 32
 #define ARR_SIZE 10
 
-void renderFrame(pioWindow_t window, SDL_Renderer *renderer);
+void renderFrame(pioWindow_t window, SDL_Renderer *renderer, output_t o, camera_t cam);
 
 int loadMedia(SDL_Renderer *renderer);
 

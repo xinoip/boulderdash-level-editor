@@ -5,6 +5,7 @@
 #include "./render.h"
 #include "./wrappers/pio-window.h"
 #include "./output.h"
+#include "./camera.h"
 
 #define INIT_WIDTH 1366
 #define INIT_HEIGHT 720
@@ -12,6 +13,7 @@
 const char *TITLE = "pioEditor";
 
 output_t gOutput;
+camera_t gCamera;
 
 pioWindow_t gWindow;
 SDL_Renderer *gRenderer = NULL;
@@ -111,6 +113,8 @@ int main(int argc, char *args[])
         successArguments = 1;
     }
 
+    gCamera = createCamera();
+
     if (!init() || successArguments == 0)
     {
         printf("Failed to initialize!\n");
@@ -137,6 +141,23 @@ int main(int argc, char *args[])
                     }
                     else if (e.type == SDL_KEYDOWN)
                     {
+                        switch (e.key.keysym.sym)
+                        {
+                        case SDLK_UP:
+                            updateCamera(&gCamera, gCamera.row, gCamera.col - 1);
+                            break;
+                        case SDLK_DOWN:
+                            updateCamera(&gCamera, gCamera.row, gCamera.col + 1);
+                            break;
+                        case SDLK_LEFT:
+                            updateCamera(&gCamera, gCamera.row - 1, gCamera.col);
+                            break;
+                        case SDLK_RIGHT:
+                            updateCamera(&gCamera, gCamera.row + 1, gCamera.col);
+                            break;
+                        default:
+                            break;
+                        }
                     }
                     else if (e.type == SDL_WINDOWEVENT)
                     {
@@ -153,7 +174,7 @@ int main(int argc, char *args[])
                     }
                 }
 
-                renderFrame(gWindow, gRenderer);
+                renderFrame(gWindow, gRenderer, gOutput, gCamera);
             }
         }
     }
