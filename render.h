@@ -11,8 +11,10 @@
 #define TILE_HEIGHT 64
 #define FONT_WIDTH 32
 #define FONT_HEIGHT 32
+#define ARR_SIZE 10
 
-void renderFrame(SDL_Renderer *renderer);
+void renderFrame(pioWindow_t window, SDL_Renderer *renderer);
+void renderPalette(pioWindow_t window, SDL_Renderer *renderer);
 
 int loadMedia(SDL_Renderer *renderer);
 

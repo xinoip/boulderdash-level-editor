@@ -4,7 +4,6 @@
 
 #include "./render.h"
 #include "./wrappers/pio-window.h"
-#include "./controls.h"
 
 #define INIT_WIDTH 1366
 #define INIT_HEIGHT 720
@@ -158,7 +157,7 @@ int main(int argc, char *args[])
                     }
                 }
 
-                renderFrame(gRenderer);
+                renderFrame(gWindow, gRenderer);
             }
         }
     }
