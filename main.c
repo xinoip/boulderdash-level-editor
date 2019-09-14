@@ -4,25 +4,14 @@
 
 #include "./render.h"
 #include "./wrappers/pio-window.h"
+#include "./output.h"
 
 #define INIT_WIDTH 1366
 #define INIT_HEIGHT 720
 
 const char *TITLE = "pioEditor";
 
-typedef struct Output
-{
-    char *name;
-    int time;
-    int diaReq;
-} output_t;
-
 output_t gOutput;
-void debugOutput() {
-    printf("name: %s\n", gOutput.name);
-    printf("time: %d\n", gOutput.time);
-    printf("diaReq: %d\n", gOutput.diaReq);
-}
 
 pioWindow_t gWindow;
 SDL_Renderer *gRenderer = NULL;
@@ -101,17 +90,24 @@ void closeAll()
 int main(int argc, char *args[])
 {
     int successArguments = 0;
-    if(argc != 4) {
-        printf("You need to pass 3 arguments: \n");
-        printf("Name, time, diaReq\n");
-    } else {
-        gOutput.name = (char *)malloc(100*sizeof(char));
+    if (argc != 6)
+    {
+        printf("You need to pass 5 arguments: \n");
+        printf("Name, time, diaReq, row, col\n");
+    }
+    else
+    {
+        gOutput.name = (char *)malloc(100 * sizeof(char));
         strcpy(gOutput.name, args[1]);
         char *timeStr = args[2];
         char *diaReqStr = args[3];
+        char *rowStr = args[4];
+        char *colStr = args[5];
         gOutput.time = atoi(timeStr);
         gOutput.diaReq = atoi(diaReqStr);
-        debugOutput();
+        gOutput.row = atoi(rowStr);
+        gOutput.col = atoi(colStr);
+        debugOutput(gOutput);
         successArguments = 1;
     }
 

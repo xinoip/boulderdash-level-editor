@@ -6,6 +6,7 @@
 #include "./wrappers/pio-texture.h"
 #include "./wrappers/pio-text-font.h"
 #include "./wrappers/pio-window.h"
+#include "./output.h"
 
 #define TILE_WIDTH 64
 #define TILE_HEIGHT 64
@@ -14,7 +15,6 @@
 #define ARR_SIZE 10
 
 void renderFrame(pioWindow_t window, SDL_Renderer *renderer);
-void renderPalette(pioWindow_t window, SDL_Renderer *renderer);
 
 int loadMedia(SDL_Renderer *renderer);
 

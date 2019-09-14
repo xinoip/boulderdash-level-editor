@@ -138,14 +138,6 @@ void closeMedia()
     destroyPioTexture(&saveTexture);
 }
 
-// Render a frame
-void renderFrame(pioWindow_t window, SDL_Renderer *renderer)
-{
-    SDL_RenderClear(renderer);
-    renderPalette(window, renderer);
-    SDL_RenderPresent(renderer);
-}
-
 // Render palette of tiles
 void renderPalette(pioWindow_t window, SDL_Renderer *renderer)
 {
@@ -156,4 +148,17 @@ void renderPalette(pioWindow_t window, SDL_Renderer *renderer)
         renderPioTexture(*tilableArray[i], currX + (i * TILE_WIDTH), currY, renderer);
     }
     renderPioTexture(saveTexture, window.width - TILE_WIDTH, currY, renderer);
+}
+
+// Render output grid
+void renderGrid(pioWindow_t window, SDL_Renderer *renderer, output_t o)
+{
+}
+
+// Render a frame
+void renderFrame(pioWindow_t window, SDL_Renderer *renderer)
+{
+    SDL_RenderClear(renderer);
+    renderPalette(window, renderer);
+    SDL_RenderPresent(renderer);
 }
