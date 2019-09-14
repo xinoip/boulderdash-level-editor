@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 #include "./render.h"
 #include "./wrappers/pio-window.h"
 
@@ -56,6 +57,13 @@ int init()
                     printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
                     success = 0;
                 }
+
+                //Initialize font loading
+                if(TTF_Init() == -1) {
+                    printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
+                    success = 0;
+
+                }
             }
         }
     }
@@ -71,6 +79,7 @@ void closeAll()
     gRenderer = NULL;
     destroyPioWindow(&gWindow);
     IMG_Quit();
+    TTF_Quit();
     SDL_Quit();
 }
 
@@ -103,6 +112,7 @@ int main(int argc, char *args[])
                     }
                     else if (e.type == SDL_KEYDOWN)
                     {
+                        
                     }
                     else if (e.type == SDL_WINDOWEVENT)
                     {

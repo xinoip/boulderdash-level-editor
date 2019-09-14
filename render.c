@@ -1,5 +1,7 @@
 #include "./render.h"
 
+TTF_Font *gFont = NULL;
+
 /* Tiles */
 pioTexture_t emptyTexture;
 pioTexture_t dirtTexture;
@@ -14,9 +16,12 @@ pioTexture_t playerTexture;
 pioTexture_t spiderTexture;
 pioTexture_t monsterTexture;
 
-/* Ui */
+/* Ui Textures */
 pioTexture_t timeTexture;
 pioTexture_t saveTexture;
+
+/* Ui Texts */
+pioTextFont_t mainText;
 
 // If successfull, return 0
 // Else, return 1
@@ -34,11 +39,42 @@ int loadTexture(pioTexture_t *pioTexture, char *path, SDL_Renderer *renderer)
     return status;
 }
 
+// If successfull, return 0
+// Else, return 1
+int loadFont(pioTextFont_t *textFont, TTF_Font *font, SDL_Renderer *renderer)
+{
+    int status = 0;
+    SDL_Color textColor = {255,255,255};
+    //*textFont = loadPioTextFont(path, renderer);
+    *textFont = loadPioTextFont("init", textColor, font, renderer);
+    resizePioTexture(&(textFont->texture), FONT_WIDTH, FONT_HEIGHT);
+    if(textFont->texture.texture == NULL) {
+        printf("Failed to load font!\n");
+        status = 1;
+
+    }
+
+    return status;
+}
+
 // If successfull, return 1
 // Else, return 0
 int loadMedia(SDL_Renderer *renderer)
 {
     int success = 1;
+
+    gFont = TTF_OpenFont("./assets/zig.ttf", 28);
+    if(gFont == NULL) {
+        printf("Failed to load zig font! SDL_ttf Error: %s\n",TTF_GetError());
+        success += 1;
+
+    } else {
+        /* Fonts */
+        success += loadFont(&mainText, gFont, renderer);
+
+    }
+
+    
 
     /* Tiles */
     success += loadTexture(&emptyTexture, "./assets/emptyTexture.png", renderer);
@@ -65,6 +101,8 @@ int loadMedia(SDL_Renderer *renderer)
 // Free all of the loaded media
 void closeMedia()
 {
+    destroyPioTextFont(mainText);
+
     destroyPioTexture(&emptyTexture);
     destroyPioTexture(&dirtTexture);
     destroyPioTexture(&rockTexture);
@@ -84,6 +122,15 @@ void closeMedia()
 // Render a frame
 void renderFrame(SDL_Renderer *renderer) {
     SDL_RenderClear(renderer);
-    renderPioTexture(waterTexture, 0, 0, renderer);
+    renderInputScene(renderer, "asd", 2, 5);
     SDL_RenderPresent(renderer);
+}
+
+void renderInputScene(SDL_Renderer *renderer, char *name, int time, int diamond) {
+    // Name:
+    renderPioTexture(mainText.texture, 300, 300, renderer);
+    // Time:
+    renderPioTexture(mainText.texture, 300, 332, renderer);
+    // Dia:
+    renderPioTexture(mainText.texture, 300, 364, renderer);
 }
