@@ -4,7 +4,6 @@
 
 #include "./render.h"
 #include "./wrappers/pio-window.h"
-#include "./inputChecker.h"
 
 #define INIT_WIDTH 1366
 #define INIT_HEIGHT 720

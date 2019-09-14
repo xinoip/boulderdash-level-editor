@@ -122,36 +122,5 @@ void closeMedia()
 // Render a frame
 void renderFrame(SDL_Renderer *renderer) {
     SDL_RenderClear(renderer);
-    renderInputScene(renderer, "asd_", 2, 5);
     SDL_RenderPresent(renderer);
-}
-
-void renderInputScene(SDL_Renderer *renderer, char *name, int time, int diamond) {
-    /* Positions */
-    int labelX = 300;
-    int labelY = 300;
-    int valueX = labelX + 632;
-    int valueY = labelY;
-
-    /* Integers to String */
-    char timeText[12];
-    char diaText[12];
-    sprintf(timeText, "%d", time);
-    sprintf(diaText, "%d", diamond);
-
-    /* Labels */
-    updatePioTextFont(&mainText, "Level Name:", renderer);
-    renderPioTexture(mainText.texture, labelX, labelY, renderer);
-    updatePioTextFont(&mainText, "Level Time:", renderer);
-    renderPioTexture(mainText.texture, labelX, labelY + 64, renderer);
-    updatePioTextFont(&mainText, "Req. Diamonds:", renderer);
-    renderPioTexture(mainText.texture, labelX, labelY + 128, renderer);
-
-    /* Values */
-    updatePioTextFont(&mainText, name, renderer);
-    renderPioTexture(mainText.texture, valueX, valueY, renderer);
-    updatePioTextFont(&mainText, timeText, renderer);
-    renderPioTexture(mainText.texture, valueX, valueY + 64, renderer);
-    updatePioTextFont(&mainText, diaText, renderer);
-    renderPioTexture(mainText.texture, valueX, valueY + 128, renderer);
 }
