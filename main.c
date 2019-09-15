@@ -230,8 +230,21 @@ int main(int argc, char *args[])
                             }
                             else if (tileX < gOutput.col && tileX >= 0 && tileY >= 0 && tileY < gOutput.row)
                             {
-                                printf("place\n");
                                 gOutput.arr[tileY][tileX] = selectedTile;
+                                //debugArray(gOutput);
+                            }
+                        } else if(e.button.button == SDL_BUTTON_RIGHT) {
+                            int mousePosX, mousePosY;
+                            int tileX, tileY;
+                            SDL_GetMouseState(&mousePosX, &mousePosY);
+                            tileX = mousePosX / TILE_WIDTH;
+                            tileY = mousePosY / TILE_HEIGHT;
+                            tileX += gCamera.col; //col
+                            tileY += gCamera.row; //row
+                            if (tileX < gOutput.col && tileX >= 0 && tileY >= 0 && tileY < gOutput.row)
+                            {
+                                printf("del\n");
+                                gOutput.arr[tileY][tileX] = emptyTile;
                                 //debugArray(gOutput);
                             }
                         }
