@@ -153,7 +153,7 @@ void renderPalette(pioWindow_t window, SDL_Renderer *renderer)
 // Render output grid
 void renderGrid(pioWindow_t window, SDL_Renderer *renderer, output_t o, camera_t cam)
 {
-    for (int y = 0, row = cam.row; y < window.height - TILE_HEIGHT; y += TILE_HEIGHT, row++)
+    for (int y = 0, row = cam.row; y < window.height - (2*TILE_HEIGHT); y += TILE_HEIGHT, row++)
     {
         for (int x = 0, col = cam.col; x < window.width; x += TILE_WIDTH, col++)
         {

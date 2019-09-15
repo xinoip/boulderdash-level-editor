@@ -135,6 +135,8 @@ int main(int argc, char *args[])
 
             SDL_Event e;
 
+            renderFrame(gWindow, gRenderer, gOutput, gCamera);
+
             while (!quit)
             {
                 while (SDL_PollEvent(&e) != 0)
@@ -187,9 +189,15 @@ int main(int argc, char *args[])
                             tileY = mousePosY / TILE_HEIGHT;
                             tileX += gCamera.col; //col
                             tileY += gCamera.row; //row
-                            printf("%d,%d, CAM %d,%d\n", tileY, tileX, gCamera.row, gCamera.col);
-                            if (tileX < gOutput.col && tileX >= 0 && tileY >= 0 && tileY < gOutput.row)
+                            //printf("%d,%d, CAM %d,%d POS %d,%d\n", tileY, tileX, gCamera.row, gCamera.col, mousePosX, mousePosY);
+                            if (mousePosY / TILE_HEIGHT >= (gWindow.height / TILE_HEIGHT) - 1)
                             {
+                                int selTilePosX = mousePosX / TILE_WIDTH;
+                                printf("%d\n", selTilePosX);
+                            }
+                            else if (tileX < gOutput.col && tileX >= 0 && tileY >= 0 && tileY < gOutput.row)
+                            {
+                                printf("place\n");
                                 gOutput.arr[tileY][tileX] = selectedTile;
                                 //debugArray(gOutput);
                             }
@@ -197,7 +205,6 @@ int main(int argc, char *args[])
                     }
                     renderFrame(gWindow, gRenderer, gOutput, gCamera);
                 }
-                renderFrame(gWindow, gRenderer, gOutput, gCamera);
             }
         }
     }
