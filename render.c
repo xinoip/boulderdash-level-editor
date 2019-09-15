@@ -153,7 +153,7 @@ void renderPalette(pioWindow_t window, SDL_Renderer *renderer)
 // Render output grid
 void renderGrid(pioWindow_t window, SDL_Renderer *renderer, output_t o, camera_t cam)
 {
-    for (int y = 0, row = cam.row; y < window.height - (2*TILE_HEIGHT); y += TILE_HEIGHT, row++)
+    for (int y = 0, row = cam.row; y < window.height - (2 * TILE_HEIGHT); y += TILE_HEIGHT, row++)
     {
         for (int x = 0, col = cam.col; x < window.width; x += TILE_WIDTH, col++)
         {
@@ -169,6 +169,27 @@ void renderGrid(pioWindow_t window, SDL_Renderer *renderer, output_t o, camera_t
                     break;
                 case borderTile:
                     renderPioTexture(borderTexture, x, y, renderer);
+                    break;
+                case playerTile:
+                    renderPioTexture(playerTexture, x, y, renderer);
+                    break;
+                case rockTile:
+                    renderPioTexture(rockTexture, x, y, renderer);
+                    break;
+                case diamondTile:
+                    renderPioTexture(diamondTexture, x, y, renderer);
+                    break;
+                case doorTile:
+                    renderPioTexture(doorTexture, x, y, renderer);
+                    break;
+                case waterTile:
+                    renderPioTexture(waterTexture, x, y, renderer);
+                    break;
+                case spiderTile:
+                    renderPioTexture(spiderTexture, x, y, renderer);
+                    break;
+                case monsterTile:
+                    renderPioTexture(monsterTexture, x, y, renderer);
                     break;
                 }
             }

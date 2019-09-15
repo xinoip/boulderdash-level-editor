@@ -194,6 +194,39 @@ int main(int argc, char *args[])
                             {
                                 int selTilePosX = mousePosX / TILE_WIDTH;
                                 printf("%d\n", selTilePosX);
+                                switch (selTilePosX)
+                                {
+                                case 0:
+                                    selectedTile = dirtTile;
+                                    break;
+                                case 1:
+                                    selectedTile = emptyTile;
+                                    break;
+                                case 2:
+                                    selectedTile = rockTile;
+                                    break;
+                                case 3:
+                                    selectedTile = diamondTile;
+                                    break;
+                                case 4:
+                                    selectedTile = doorTile;
+                                    break;
+                                case 5:
+                                    selectedTile = waterTile;
+                                    break;
+                                case 6:
+                                    selectedTile = borderTile;
+                                    break;
+                                case 7:
+                                    selectedTile = playerTile;
+                                    break;
+                                case 8:
+                                    selectedTile = spiderTile;
+                                    break;
+                                case 9:
+                                    selectedTile = monsterTile;
+                                    break;
+                                }
                             }
                             else if (tileX < gOutput.col && tileX >= 0 && tileY >= 0 && tileY < gOutput.row)
                             {
