@@ -153,17 +153,15 @@ void renderPalette(pioWindow_t window, SDL_Renderer *renderer)
 // Render output grid
 void renderGrid(pioWindow_t window, SDL_Renderer *renderer, output_t o, camera_t cam)
 {
-    int camRow = cam.row;
-    int camCol = cam.col;
-    int camW = window.width / TILE_WIDTH;
-    int camH = window.height / TILE_HEIGHT;
+    int colSize = window.width / TILE_WIDTH;
+    int rowSize = window.height / TILE_HEIGHT;
     int posX = 0;
     int posY = 0;
     //printf("w %d, h %d\n", camW, camH);
-    for(int row = camRow; row < camH; row++) {
-        for(int col = camCol; col < camW; col++) {
-            posX = row * TILE_HEIGHT;
-            posY = col * TILE_WIDTH;
+    for(int row = cam.row; row < rowSize; row++) {
+        for(int col = cam.col; col < colSize; col++) {
+            posY = row * TILE_HEIGHT;
+            posX = col * TILE_WIDTH;
             if(row < o.row && row >= 0 && col < o.col && col >= 0) {
                 renderPioTexture(dirtTexture, posX, posY, renderer);
 

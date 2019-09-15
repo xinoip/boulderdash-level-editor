@@ -144,16 +144,16 @@ int main(int argc, char *args[])
                         switch (e.key.keysym.sym)
                         {
                         case SDLK_UP:
-                            updateCamera(&gCamera, gCamera.row, gCamera.col - 1);
+                            updateCamera(&gCamera, gCamera.row-1, gCamera.col);
                             break;
                         case SDLK_DOWN:
-                            updateCamera(&gCamera, gCamera.row, gCamera.col + 1);
+                            updateCamera(&gCamera, gCamera.row+1, gCamera.col);
                             break;
                         case SDLK_LEFT:
-                            updateCamera(&gCamera, gCamera.row - 1, gCamera.col);
+                            updateCamera(&gCamera, gCamera.row, gCamera.col-1);
                             break;
                         case SDLK_RIGHT:
-                            updateCamera(&gCamera, gCamera.row + 1, gCamera.col);
+                            updateCamera(&gCamera, gCamera.row, gCamera.col+1);
                             break;
                         default:
                             break;
