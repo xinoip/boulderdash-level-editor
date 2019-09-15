@@ -20,12 +20,24 @@ void initArray(output_t *o)
     {
         for (int col = 0; col < o->col; col++)
         {
-            o->arr[row][col] = emptyTile;
+            if (row == 0 || row == o->row - 1)
+            {
+                o->arr[row][col] = borderTile;
+            }
+            else if (col == 0 || col == o->col - 1)
+            {
+                o->arr[row][col] = borderTile;
+            }
+            else
+            {
+                o->arr[row][col] = emptyTile;
+            }
         }
     }
 }
 
-void debugArray(output_t o) {
+void debugArray(output_t o)
+{
     for (int row = 0; row < o.row; row++)
     {
         for (int col = 0; col < o.col; col++)

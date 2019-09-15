@@ -167,6 +167,9 @@ void renderGrid(pioWindow_t window, SDL_Renderer *renderer, output_t o, camera_t
                 case dirtTile:
                     renderPioTexture(dirtTexture, x, y, renderer);
                     break;
+                case borderTile:
+                    renderPioTexture(borderTexture, x, y, renderer);
+                    break;
                 }
             }
         }
