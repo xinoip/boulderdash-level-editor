@@ -47,3 +47,43 @@ void debugArray(output_t o)
         printf("\n");
     }
 }
+
+void exportOutput(output_t o, char *fileName)
+{
+    FILE *fp = fopen(fileName, "w");
+    if (fp == NULL)
+    {
+        printf("fileio error!");
+        return;
+    }
+
+    fprintf(fp, "%s\n", o.name);
+    fprintf(fp, "%d %d\n", o.row, o.col);
+
+    for (int row = 0; row < o.row; row++)
+    {
+        for (int col = 0; col < o.col; col++)
+        {
+            if (o.arr[row][col] == playerTile)
+            {
+                fprintf(fp, "%d %d\n", row, col);
+                break;
+            }
+        }
+    }
+    fprintf(fp, "%d\n", o.diaReq);
+    fprintf(fp, "%d %d\n", o.time, 1400);
+    fprintf(fp, "%c\n", '-');
+
+    for (int row = 0; row < o.row; row++)
+    {
+        for (int col = 0; col < o.col; col++)
+        {
+            fprintf(fp, "%c", o.arr[row][col]);
+        }
+        fprintf(fp, "\n");
+    }
+
+    fclose(fp);
+    fp = NULL;
+}

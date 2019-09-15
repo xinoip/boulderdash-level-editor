@@ -255,6 +255,7 @@ int main(int argc, char *args[])
         }
     }
 
+    exportOutput(gOutput, "./plswork.txt");
     closeAll();
 
     return 0;

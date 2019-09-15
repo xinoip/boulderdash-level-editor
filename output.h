@@ -21,4 +21,6 @@ void debugArray(output_t o);
 
 void initArray(output_t *o);
 
+void exportOutput(output_t o, char *fileName);
+
 #endif
