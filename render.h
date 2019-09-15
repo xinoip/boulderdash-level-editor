@@ -8,6 +8,7 @@
 #include "./wrappers/pio-window.h"
 #include "./output.h"
 #include "./camera.h"
+#include "./base.h"
 
 #define TILE_WIDTH 64
 #define TILE_HEIGHT 64

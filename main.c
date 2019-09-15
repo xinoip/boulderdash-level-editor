@@ -110,6 +110,8 @@ int main(int argc, char *args[])
         gOutput.row = atoi(rowStr);
         gOutput.col = atoi(colStr);
         debugOutput(gOutput);
+        initArray(&gOutput);
+        //debugArray(gOutput);
         successArguments = 1;
     }
 
@@ -129,6 +131,8 @@ int main(int argc, char *args[])
         {
             int quit = 0;
 
+            char selectedTile = dirtTile;
+
             SDL_Event e;
 
             while (!quit)
@@ -144,16 +148,16 @@ int main(int argc, char *args[])
                         switch (e.key.keysym.sym)
                         {
                         case SDLK_UP:
-                            updateCamera(&gCamera, gCamera.row-1, gCamera.col);
+                            updateCamera(&gCamera, gCamera.row - 1, gCamera.col);
                             break;
                         case SDLK_DOWN:
-                            updateCamera(&gCamera, gCamera.row+1, gCamera.col);
+                            updateCamera(&gCamera, gCamera.row + 1, gCamera.col);
                             break;
                         case SDLK_LEFT:
-                            updateCamera(&gCamera, gCamera.row, gCamera.col-1);
+                            updateCamera(&gCamera, gCamera.row, gCamera.col - 1);
                             break;
                         case SDLK_RIGHT:
-                            updateCamera(&gCamera, gCamera.row, gCamera.col+1);
+                            updateCamera(&gCamera, gCamera.row, gCamera.col + 1);
                             break;
                         default:
                             break;
@@ -172,8 +176,27 @@ int main(int argc, char *args[])
                             break;
                         }
                     }
+                    else if (e.type == SDL_MOUSEBUTTONDOWN)
+                    {
+                        if (e.button.button == SDL_BUTTON_LEFT)
+                        {
+                            int mousePosX, mousePosY;
+                            int tileX, tileY;
+                            SDL_GetMouseState(&mousePosX, &mousePosY);
+                            tileX = mousePosX / TILE_WIDTH;
+                            tileY = mousePosY / TILE_HEIGHT;
+                            tileX += gCamera.col; //col
+                            tileY += gCamera.row; //row
+                            printf("%d,%d, CAM %d,%d\n", tileY, tileX, gCamera.row, gCamera.col);
+                            if (tileX < gOutput.col && tileX >= 0 && tileY >= 0 && tileY < gOutput.row)
+                            {
+                                gOutput.arr[tileY][tileX] = selectedTile;
+                                //debugArray(gOutput);
+                            }
+                        }
+                    }
+                    renderFrame(gWindow, gRenderer, gOutput, gCamera);
                 }
-
                 renderFrame(gWindow, gRenderer, gOutput, gCamera);
             }
         }
