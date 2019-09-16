@@ -257,7 +257,7 @@ int main(int argc, char *args[])
         }
     }
 
-    exportOutput(gOutput, "./plswork.txt");
+    exportOutput(gOutput, "./createdLevel.txt");
     closeAll();
 
     return 0;

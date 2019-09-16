@@ -1,9 +1,9 @@
 OBJS = *.c ./*/*.c
 CC = gcc
 COMPILER_FLAGS = -Wall
-LINKER_FLAGS = ./libs/libSDL2.so ./libs/libSDL2_image.so ./libs/libSDL2_ttf.so ./libs/libfreetype.so -L. `./sdl2-config --static-libs`
+LINKER_FLAGS = ./libs/libSDL2.so ./libs/libSDL2_image.so ./libs/libSDL2_ttf.so ./libs/libfreetype.so -L.
 
-LD_LIBRARY_PATH = ./
+LD_LIBRARY_PATH = ./libs
 export LD_LIBRARY_PATH
 
 OBJ_NAME = app
