@@ -20,10 +20,9 @@ The arguments are, levels
 3. Required diamonds to open door
 4. Canvas row limit
 5. Canvas col limit
-6. Water spread speed (ms)
 
 ```bash
-./app MyLevel 150 30 128 56 3000
+./app MyLevel 150 30 128 56
 ```
 
 ## Produced File
