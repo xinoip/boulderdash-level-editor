@@ -1,8 +1,9 @@
 #ifndef PIO_TEXTURE_H
 #define PIO_TEXTURE_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+#include <stdio.h>
+#include "../libs/include/SDL.h"
+#include "../libs/include/SDL_image.h"
 
 typedef struct PioTexture {
     int width, height;

@@ -1,7 +1,9 @@
 #ifndef PIO_TEXT_FONT_H
 #define PIO_TEXT_FONT_H
 
-#include <SDL2/SDL_ttf.h>
+#include <stdio.h>
+#include <string.h>
+#include "../libs/include/SDL_ttf.h"
 #include "./pio-texture.h"
 
 typedef struct PioTextFont {

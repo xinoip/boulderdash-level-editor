@@ -1,8 +1,8 @@
 #ifndef RENDER_H
 #define RENDER_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include "./libs/include/SDL.h"
+#include "./libs/include/SDL_ttf.h"
 #include "./wrappers/pio-texture.h"
 #include "./wrappers/pio-text-font.h"
 #include "./wrappers/pio-window.h"

@@ -6,7 +6,7 @@ This is a level maker/editor program for my boulderdash clone (in C).
 
 Main game that i made is [here](https://github.com/xinoip/boulderDash).
 
-## What it does?
+### What it does?
 
 It works as a basic tilemap editor. Select tiles and paint.
 For camera movement, use arrow keys.

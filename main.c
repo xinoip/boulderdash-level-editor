@@ -1,6 +1,8 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
+#include "./libs/include/SDL.h"
+#include "./libs/include/SDL_image.h"
+#include "./libs/include/SDL_ttf.h"
+
+#include <string.h>
 
 #include "./render.h"
 #include "./wrappers/pio-window.h"
