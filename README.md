@@ -13,17 +13,16 @@ For camera movement, use arrow keys.
 
 ## Command Line Arguments
 
-You need to pass 6 arguments when running the program.
+You need to pass 5 arguments when running the program.
 The arguments are, levels
 1. Name
 2. Timelimit
 3. Required diamonds to open door
 4. Canvas row limit
 5. Canvas col limit
-6. Water spread speed (ms)
 
 ```bash
-./app MyLevel 150 30 128 56 3000
+./app MyLevel 150 30 128 56
 ```
 
 ## Produced File
@@ -31,3 +30,13 @@ The arguments are, levels
 Produced file will be a basic txt file, and it will work for my game.
 
 You can change the symbols of tiles in [base.h](https://github.com/xinoip/bd-level-editor/blob/master/base.h) file.
+
+## Library Path
+
+If you run the game using makefile, there will be no problem.
+
+But if you want to run the game without makefile set your LD_LIBRARY_PATH:
+
+```bash
+export LD_LIBRARY_PATH:$LD_LIBRARY_PATH:./libs
+```
