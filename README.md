@@ -13,7 +13,7 @@ For camera movement, use arrow keys.
 
 ## Command Line Arguments
 
-You need to pass 6 arguments when running the program.
+You need to pass 5 arguments when running the program.
 The arguments are, levels
 1. Name
 2. Timelimit
