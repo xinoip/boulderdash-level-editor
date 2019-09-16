@@ -1,7 +1,7 @@
 #ifndef PIO_WINDOW_H
 #define PIO_WINDOW_H
 
-#include <SDL2/SDL.h>
+#include "../libs/include/SDL.h"
 
 typedef struct PioWindow {
     SDL_Window *window;
