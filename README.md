@@ -31,3 +31,13 @@ The arguments are, levels
 Produced file will be a basic txt file, and it will work for my game.
 
 You can change the symbols of tiles in [base.h](https://github.com/xinoip/bd-level-editor/blob/master/base.h) file.
+
+## Library Path
+
+If you run the game using makefile, there will be no problem.
+
+But if you want to run the game without makefile set your LD_LIBRARY_PATH:
+
+```bash
+export LD_LIBRARY_PATH:$LD_LIBRARY_PATH:./libs
+```
