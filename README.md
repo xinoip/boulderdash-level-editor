@@ -1,3 +1,5 @@
+![Showcase](https://github.com/xinoip/boulderdash-level-editor/blob/linux-release/readme-assets/readmeGif.gif "Showcase")
+
 # Boulderdash Level Maker
 
 This is a level maker/editor program for my boulderdash clone (in C).
